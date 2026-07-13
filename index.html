@@ -47,6 +47,9 @@ body { margin: 0; }
 .gs-nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px); background: rgba(10,14,18,0.75); border-bottom: 1px solid var(--line); }
 .gs-nav-inner { max-width: 960px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
 .gs-brand { display: flex; align-items: center; gap: 8px; font-size: 14px; letter-spacing: 0.02em; color: var(--text); }
+.gs-nav-links { display: flex; align-items: center; gap: 20px; }
+.gs-nav-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+.gs-nav-link:hover { color: var(--accent); }
 .gs-status { display: flex; align-items: center; gap: 14px; }
 .gs-nav-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--accent); }
 .gs-nav-coverage { font-size: 11px; color: var(--muted); }
@@ -136,6 +139,32 @@ body { margin: 0; }
 .gs-edu-degree { font-size: 14px; font-weight: 700; color: var(--text); }
 .gs-edu-school { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 
+.gs-resume-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.gs-resume-left { display: flex; align-items: center; gap: 16px; }
+.gs-resume-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+.gs-resume-title { font-size: 15px; font-weight: 700; color: var(--text); }
+.gs-resume-sub { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+.gs-resume-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.gs-projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+.gs-proj-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s ease, transform 0.2s ease; }
+.gs-proj-card:hover { border-color: rgba(62,207,142,0.4); transform: translateY(-3px); box-shadow: 0 14px 34px -18px rgba(62,207,142,0.35); }
+.gs-proj-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.gs-proj-title { font-size: 14.5px; font-weight: 700; color: var(--text); line-height: 1.4; }
+.gs-proj-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); border: 1px solid rgba(242,184,75,0.35); background: rgba(242,184,75,0.08); padding: 3px 8px; border-radius: 20px; flex-shrink: 0; white-space: nowrap; }
+.gs-proj-desc { font-size: 13px; color: #C3CDD8; line-height: 1.65; }
+.gs-proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.gs-proj-link { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); display: flex; align-items: center; gap: 6px; text-decoration: none; padding-top: 4px; }
+.gs-proj-link:hover { text-decoration: underline; }
+
+.gs-soon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.gs-soon-card { border: 1px dashed var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s ease; }
+.gs-soon-card:hover { border-color: rgba(62,207,142,0.35); }
+.gs-soon-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--panel); display: flex; align-items: center; justify-content: center; color: var(--muted); }
+.gs-soon-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--amber); border: 1px solid rgba(242,184,75,0.35); background: rgba(242,184,75,0.08); padding: 3px 8px; border-radius: 20px; width: fit-content; }
+.gs-soon-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.gs-soon-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
 .gs-footer { padding: 70px 0 60px; text-align: center; }
 .gs-footer-title { font-family: 'JetBrains Mono', monospace; font-size: 22px; margin-bottom: 10px; }
 .gs-footer-sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
@@ -144,7 +173,7 @@ body { margin: 0; }
 .gs-flink:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 .gs-fine { margin-top: 46px; font-size: 12px; color: #556170; font-family: 'JetBrains Mono', monospace; }
 
-@media (max-width: 720px) { .gs-stats { grid-template-columns: repeat(2, 1fr); } .gs-two-col { grid-template-columns: 1fr; } }
+@media (max-width: 720px) { .gs-stats { grid-template-columns: repeat(2, 1fr); } .gs-two-col { grid-template-columns: 1fr; } .gs-nav-links { display: none; } }
 @media (max-width: 480px) { .gs-nav-coverage { display: none; } }
 @media (prefers-reduced-motion: reduce) { .gs-term-line, .gs-reveal, .gs-dot { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; } }
 </style>
@@ -169,6 +198,9 @@ const Github = (p) => <Icon {...p}><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.
 const Award = (p) => <Icon {...p}><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" /></Icon>;
 const GraduationCap = (p) => <Icon {...p}><path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5" /></Icon>;
 const ChevronRight = (p) => <Icon {...p}><polyline points="9 18 15 12 9 6" /></Icon>;
+const FileText = (p) => <Icon {...p}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></Icon>;
+const PlayCircle = (p) => <Icon {...p}><circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" /></Icon>;
+const BookOpen = (p) => <Icon {...p}><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></Icon>;
 
 function useReveal() {
   const ref = useRef(null);
@@ -244,6 +276,61 @@ const TIMELINE = [
   ]},
 ];
 
+const PROJECTS = [
+  {
+    title: "Denefits — Web & Mobile QA",
+    badge: "live project",
+    desc: "Owned end-to-end QA for major features across Web and Mobile; validated and launched the Payment Plans feature covering workflows, edge cases, and integrations.",
+    tags: ["Manual + Automation", "Payment Workflows", "Web & Mobile"],
+    link: "https://github.com/GurAutoTest",
+    linkLabel: "View on GitHub",
+  },
+  {
+    title: "Playwright + GitHub Actions CI/CD Framework",
+    badge: "add repo link",
+    desc: "Playwright/TypeScript automation framework wired into a GitHub Actions pipeline — runs on every push, parallelized across browsers, with pass/fail status posted back to the PR.",
+    tags: ["Playwright", "TypeScript", "GitHub Actions", "POM"],
+    link: "https://github.com/GurAutoTest",
+    linkLabel: "Add your repo link",
+  },
+  {
+    title: "REST API Automation Suite",
+    badge: "add repo link",
+    desc: "API test suite covering auth flows, schema validation, and negative cases — built for a payment gateway backend with environment-based variable management.",
+    tags: ["Postman", "Playwright API", "Schema Validation"],
+    link: "https://github.com/GurAutoTest",
+    linkLabel: "Add your repo link",
+  },
+  {
+    title: "Automated Test Reporting Dashboard",
+    badge: "add repo link",
+    desc: "Allure / Playwright HTML reporting setup that turns raw CI runs into a shareable dashboard — trend view, flaky-test flags, and screenshots on failure.",
+    tags: ["Allure Report", "CI/CD", "Playwright"],
+    link: "https://github.com/GurAutoTest",
+    linkLabel: "Add your repo link",
+  },
+  {
+    title: "Cross-Browser E2E Framework",
+    badge: "add repo link",
+    desc: "Data-driven Playwright framework using Page Object Model, running the same suite across Chrome, Firefox, and WebKit in parallel.",
+    tags: ["Playwright", "Cross-Browser", "Data-Driven", "POM"],
+    link: "https://github.com/GurAutoTest",
+    linkLabel: "Add your repo link",
+  },
+];
+
+const VIDEOS = [
+  { title: "CI/CD Pipeline Walkthrough", desc: "Screen-recorded walkthrough of a Playwright suite running inside GitHub Actions, end to end." },
+  { title: "API Automation Demo", desc: "Postman/Playwright API suite in action — auth, validation, and negative test cases." },
+  { title: "Playwright Debugging Tips", desc: "Short demo of trace viewer, headed mode, and common flaky-test fixes." },
+];
+
+const BLOG = [
+  { title: "Building a Scalable Playwright Framework", desc: "POM structure, fixtures, and CI wiring for a framework that survives a growing codebase." },
+  { title: "API Testing Best Practices", desc: "Environment variables, schema validation, and what to automate first in a Postman suite." },
+  { title: "From Manual to Automation: My QA Journey", desc: "How 4 years of manual + automation testing shaped the way I approach a new feature." },
+];
+
 function Portfolio() {
   const [lineCount, setLineCount] = useState(0);
   useEffect(() => {
@@ -258,6 +345,13 @@ function Portfolio() {
       <nav className="gs-nav">
         <div className="gs-nav-inner">
           <div className="gs-brand gs-mono"><Terminal size={16} color="#3ECF8E" /> gurdeep.qa</div>
+          <div className="gs-nav-links">
+            <a className="gs-nav-link" href="#projects">Projects</a>
+            <a className="gs-nav-link" href="#videos">Videos</a>
+            <a className="gs-nav-link" href="#blog">Blog</a>
+            <a className="gs-nav-link" href="#resume">Resume</a>
+            <a className="gs-nav-link" href="#contact">Contact</a>
+          </div>
           <div className="gs-status">
             <span className="gs-nav-coverage gs-mono">coverage <b>94%</b></span>
             <span className="gs-nav-badge gs-mono"><span className="gs-dot" /> available for work</span>
@@ -304,7 +398,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="gs-section">
+        <section className="gs-section" id="about">
           <Reveal>
             <div className="gs-section-head"><span className="gs-section-tag gs-mono">01</span><span className="gs-section-title">About</span></div>
             <p className="gs-about-text">
@@ -313,7 +407,7 @@ function Portfolio() {
           </Reveal>
         </section>
 
-        <section className="gs-section">
+        <section className="gs-section" id="skills">
           <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">02</span><span className="gs-section-title">Test Suites (Skills)</span></div></Reveal>
           <div className="gs-suite-grid">
             {SUITES.map((s, i) => (
@@ -327,7 +421,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="gs-section">
+        <section className="gs-section" id="experience">
           <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">03</span><span className="gs-section-title">Experience Log</span></div></Reveal>
           <div className="gs-timeline">
             {TIMELINE.map((item, i) => (
@@ -344,22 +438,74 @@ function Portfolio() {
           </div>
         </section>
 
-        <section className="gs-section">
+        <section className="gs-section" id="resume">
           <Reveal>
-            <div className="gs-section-head"><span className="gs-section-tag gs-mono">04</span><span className="gs-section-title">Featured Project</span></div>
-            <div className="gs-project">
-              <div className="gs-project-head">
-                <span className="gs-project-title">Denefits — Web & Mobile Application</span>
-                <span className="gs-project-badge">₹1,00,000+ delivered</span>
+            <div className="gs-section-head"><span className="gs-section-tag gs-mono">04</span><span className="gs-section-title">Resume</span></div>
+            <div className="gs-resume-card">
+              <div className="gs-resume-left">
+                <div className="gs-resume-icon"><FileText size={20} /></div>
+                <div>
+                  <div className="gs-resume-title">Gurdeep_Singh_Senior_QA_Engineer_Resume.pdf</div>
+                  <div className="gs-resume-sub">Updated Jul 2026 · ATS-optimized · 2 pages</div>
+                </div>
               </div>
-              <ul>
-                <li><ChevronRight size={15} />Owned end-to-end QA for major features, from development to live release, across Web and Mobile.</li>
-                <li><ChevronRight size={15} />Tested and signed off every new feature pre-production — zero critical defects shipped.</li>
-                <li><ChevronRight size={15} />Validated and launched the Payment Plans feature, covering workflows, edge cases, and integrations.</li>
-                <li><ChevronRight size={15} />Actively building new automation projects — <span className="gs-mono">github.com/GurAutoTest</span></li>
-              </ul>
+              <div className="gs-resume-actions">
+                <a className="gs-btn" href="resume.pdf" target="_blank" rel="noreferrer"><FileText size={14} /> View Resume</a>
+                <a className="gs-btn gs-btn-primary" href="resume.pdf" download><ChevronRight size={14} /> Download PDF</a>
+              </div>
             </div>
           </Reveal>
+        </section>
+
+        <section className="gs-section" id="projects">
+          <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">05</span><span className="gs-section-title">Projects</span></div></Reveal>
+          <div className="gs-projects-grid">
+            {PROJECTS.map((p, i) => (
+              <Reveal key={p.title} delay={i * 60}>
+                <div className="gs-proj-card">
+                  <div className="gs-proj-top">
+                    <span className="gs-proj-title">{p.title}</span>
+                    <span className="gs-proj-badge">{p.badge}</span>
+                  </div>
+                  <p className="gs-proj-desc">{p.desc}</p>
+                  <div className="gs-proj-tags">{p.tags.map((t) => <span className="gs-tag" key={t}>{t}</span>)}</div>
+                  <a className="gs-proj-link" href={p.link} target="_blank" rel="noreferrer">{p.linkLabel} <ChevronRight size={13} /></a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="gs-section" id="videos">
+          <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">06</span><span className="gs-section-title">Automation Videos</span></div></Reveal>
+          <div className="gs-soon-grid">
+            {VIDEOS.map((v, i) => (
+              <Reveal key={v.title} delay={i * 60}>
+                <div className="gs-soon-card">
+                  <div className="gs-soon-icon"><PlayCircle size={18} /></div>
+                  <span className="gs-soon-tag">coming soon</span>
+                  <div className="gs-soon-title">{v.title}</div>
+                  <div className="gs-soon-desc">{v.desc}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="gs-section" id="blog">
+          <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">07</span><span className="gs-section-title">Blog</span></div></Reveal>
+          <div className="gs-soon-grid">
+            {BLOG.map((b, i) => (
+              <Reveal key={b.title} delay={i * 60}>
+                <div className="gs-soon-card">
+                  <div className="gs-soon-icon"><BookOpen size={18} /></div>
+                  <span className="gs-soon-tag">coming soon</span>
+                  <div className="gs-soon-title">{b.title}</div>
+                  <div className="gs-soon-desc">{b.desc}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </section>
 
         <section className="gs-section">
@@ -384,7 +530,7 @@ function Portfolio() {
           </Reveal>
         </section>
 
-        <footer className="gs-footer">
+        <footer className="gs-footer" id="contact">
           <Reveal>
             <div className="gs-footer-title gs-mono">$ let's talk_</div>
             <div className="gs-footer-sub">Open to Automation QA & SDET roles — reply within a day.</div>
