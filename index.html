@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gurdeep Singh — Senior QA Engineer / SDET</title>
+<meta name="description" content="Gurdeep Singh — Senior QA Engineer / SDET. Playwright, Selenium, API & Performance testing, Healthcare SaaS & Payment Gateway domain." />
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.gs-root {
+  --ink: #0A0E12;
+  --panel: #121820;
+  --panel-2: #171F29;
+  --line: rgba(230,237,243,0.08);
+  --text: #E7EDF3;
+  --muted: #8A97A6;
+  --accent: #3ECF8E;
+  --accent-dim: rgba(62,207,142,0.14);
+  --amber: #F2B84B;
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(62,207,142,0.10), transparent 60%),
+    radial-gradient(900px 460px at 88% 8%, rgba(242,184,75,0.06), transparent 55%),
+    var(--ink);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+.gs-root *:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.gs-mono { font-family: 'JetBrains Mono', monospace; }
+
+.gs-noise {
+  position: fixed; inset: 0; pointer-events: none; opacity: 0.035; z-index: 0;
+  background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+.gs-wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+.gs-nav { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px); background: rgba(10,14,18,0.75); border-bottom: 1px solid var(--line); }
+.gs-nav-inner { max-width: 960px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+.gs-brand { display: flex; align-items: center; gap: 8px; font-size: 14px; letter-spacing: 0.02em; color: var(--text); }
+.gs-status { display: flex; align-items: center; gap: 14px; }
+.gs-nav-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--accent); }
+.gs-nav-coverage { font-size: 11px; color: var(--muted); }
+.gs-nav-coverage b { color: var(--text); }
+.gs-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+.gs-cursor { display: inline-block; width: 7px; height: 14px; background: var(--accent); margin-left: 2px; vertical-align: -2px; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.gs-hero { padding: 72px 0 40px; }
+.gs-eyebrow { font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 18px; }
+
+.gs-terminal { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; box-shadow: 0 20px 60px -20px rgba(0,0,0,0.6); }
+.gs-term-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: var(--panel-2); }
+.gs-term-dot { width: 10px; height: 10px; border-radius: 50%; }
+.gs-term-body { padding: 22px 22px 26px; font-size: 14px; line-height: 1.9; min-height: 168px; }
+.gs-term-line { opacity: 0; transform: translateY(4px); animation: gsIn 0.4s ease forwards; }
+.gs-prompt { color: var(--muted); }
+.gs-out { color: var(--text); }
+.gs-check { color: var(--accent); }
+@keyframes gsIn { to { opacity: 1; transform: translateY(0); } }
+
+.gs-h1 { font-family: 'JetBrains Mono', monospace; font-size: clamp(28px, 4.5vw, 44px); font-weight: 700; margin: 28px 0 10px; letter-spacing: -0.01em; }
+.gs-h1 span { color: var(--accent); }
+.gs-role { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.6; }
+
+.gs-cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+.gs-btn { font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 11px 18px; border-radius: 7px; border: 1px solid var(--line); color: var(--text); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: border-color 0.2s ease, transform 0.15s ease, background 0.2s ease; }
+.gs-btn:hover { transform: translateY(-2px); border-color: var(--accent); background: var(--accent-dim); }
+.gs-btn-primary { background: var(--accent); color: #05130C; border-color: var(--accent); font-weight: 600; }
+.gs-btn-primary:hover { background: #4EE0A0; }
+
+.gs-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 44px; }
+.gs-stat { background: var(--panel); padding: 20px 16px; text-align: center; }
+.gs-stat-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--accent); }
+.gs-stat-label { font-size: 11.5px; color: var(--muted); margin-top: 6px; letter-spacing: 0.02em; }
+
+.gs-section { padding: 88px 0; border-top: 1px solid var(--line); }
+.gs-section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 36px; }
+.gs-section-tag { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); }
+.gs-section-title { font-size: 22px; font-weight: 700; }
+
+.gs-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.gs-reveal.gs-visible { opacity: 1; transform: translateY(0); }
+
+.gs-about-text { font-size: 15.5px; line-height: 1.85; color: #CBD5E0; max-width: 680px; }
+.gs-about-text b { color: var(--text); }
+
+.gs-suite-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.gs-suite { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; transition: border-color 0.2s ease, transform 0.2s ease; }
+.gs-suite:hover { border-color: rgba(62,207,142,0.4); transform: translateY(-3px); box-shadow: 0 14px 34px -18px rgba(62,207,142,0.35); }
+.gs-suite-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.gs-suite-name { font-size: 13.5px; font-weight: 700; color: var(--text); }
+.gs-suite-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+.gs-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.gs-tag { font-size: 11.5px; color: var(--muted); background: var(--panel-2); border: 1px solid var(--line); padding: 4px 9px; border-radius: 5px; }
+
+.gs-timeline { position: relative; padding-left: 26px; }
+.gs-timeline::before { content: ''; position: absolute; left: 5px; top: 4px; bottom: 4px; width: 1px; background: var(--line); }
+.gs-tl-item { position: relative; padding-bottom: 40px; }
+.gs-tl-item:last-child { padding-bottom: 0; }
+.gs-tl-dot { position: absolute; left: -26px; top: 3px; width: 11px; height: 11px; border-radius: 50%; background: var(--ink); border: 2px solid var(--accent); }
+.gs-tl-time { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--accent); margin-bottom: 5px; }
+.gs-tl-role { font-size: 16px; font-weight: 700; color: var(--text); }
+.gs-tl-org { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.gs-tl-bullets { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.gs-tl-bullets li { display: flex; gap: 9px; font-size: 13.5px; color: #C3CDD8; line-height: 1.6; }
+.gs-tl-bullets svg { flex-shrink: 0; margin-top: 3px; color: var(--accent); }
+
+.gs-project { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 26px 28px; }
+.gs-project-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+.gs-project-title { font-size: 17px; font-weight: 700; }
+.gs-project-badge { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--amber); border: 1px solid rgba(242,184,75,0.35); background: rgba(242,184,75,0.08); padding: 4px 10px; border-radius: 20px; }
+.gs-project ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.gs-project li { display: flex; gap: 9px; font-size: 13.5px; color: #C3CDD8; line-height: 1.6; }
+.gs-project li svg { flex-shrink: 0; margin-top: 3px; color: var(--accent); }
+
+.gs-two-col { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; }
+.gs-card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 22px 24px; }
+.gs-card-title { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+.gs-ach-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.gs-ach-list li { display: flex; gap: 10px; font-size: 13.5px; color: var(--text); align-items: flex-start; }
+.gs-ach-list svg { color: var(--amber); flex-shrink: 0; margin-top: 2px; }
+.gs-edu-item { margin-bottom: 16px; }
+.gs-edu-item:last-child { margin-bottom: 0; }
+.gs-edu-degree { font-size: 14px; font-weight: 700; color: var(--text); }
+.gs-edu-school { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+.gs-footer { padding: 70px 0 60px; text-align: center; }
+.gs-footer-title { font-family: 'JetBrains Mono', monospace; font-size: 22px; margin-bottom: 10px; }
+.gs-footer-sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+.gs-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.gs-flink { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text); border: 1px solid var(--line); padding: 10px 16px; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
+.gs-flink:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.gs-fine { margin-top: 46px; font-size: 12px; color: #556170; font-family: 'JetBrains Mono', monospace; }
+
+@media (max-width: 720px) { .gs-stats { grid-template-columns: repeat(2, 1fr); } .gs-two-col { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .gs-nav-coverage { display: none; } }
+@media (prefers-reduced-motion: reduce) { .gs-term-line, .gs-reveal, .gs-dot { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useEffect, useRef, useState } = React;
+
+/* ---- tiny inline icon set (no external icon lib needed) ---- */
+const Icon = ({ path, size = 16, color = "currentColor", children }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    {children}
+  </svg>
+);
+const Terminal = (p) => <Icon {...p}><polyline points="4 17 10 11 4 5" /><line x1="12" y1="19" x2="20" y2="19" /></Icon>;
+const CheckCircle2 = (p) => <Icon {...p}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></Icon>;
+const Mail = (p) => <Icon {...p}><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" /></Icon>;
+const Phone = (p) => <Icon {...p}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" /></Icon>;
+const Linkedin = (p) => <Icon {...p}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></Icon>;
+const Github = (p) => <Icon {...p}><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></Icon>;
+const Award = (p) => <Icon {...p}><circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" /></Icon>;
+const GraduationCap = (p) => <Icon {...p}><path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5" /></Icon>;
+const ChevronRight = (p) => <Icon {...p}><polyline points="9 18 15 12 9 6" /></Icon>;
+
+function useReveal() {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } }, { threshold: 0.15 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+function Reveal({ children, delay = 0 }) {
+  const [ref, visible] = useReveal();
+  return <div ref={ref} className={`gs-reveal ${visible ? "gs-visible" : ""}`} style={{ transitionDelay: `${delay}ms` }}>{children}</div>;
+}
+
+function Counter({ target, suffix = "", duration = 1400 }) {
+  const [ref, visible] = useReveal();
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!visible) return;
+    let start = null;
+    const step = (ts) => {
+      if (!start) start = ts;
+      const progress = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setVal(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [visible, target, duration]);
+  return <span ref={ref}>{val}{suffix}</span>;
+}
+
+const TERMINAL_LINES = [
+  { type: "cmd", text: "$ whoami" },
+  { type: "out", text: "> Gurdeep Singh — Senior QA Engineer / SDET" },
+  { type: "cmd", text: "$ check --experience" },
+  { type: "check", text: "✓ 4+ years | Healthcare SaaS & Payment Gateway" },
+  { type: "cmd", text: "$ check --status" },
+  { type: "check", text: "✓ Open to: Automation QA & SDET roles" },
+];
+
+const SUITES = [
+  { name: "Automation", count: "6 tools", tags: ["Playwright (TS/Python)", "Selenium WebDriver", "Pytest", "POM", "BDD", "Parallel Execution"] },
+  { name: "Manual Testing", count: "6 areas", tags: ["Test Strategy", "Functional", "Regression", "UAT", "Cross-Browser", "Mobile (Android/iOS)"] },
+  { name: "API Testing", count: "5 tools", tags: ["Postman Automation", "REST API", "Swagger/OpenAPI", "JSON/XML Validation", "Schema Validation"] },
+  { name: "Performance", count: "3 tools", tags: ["JMeter", "Load Testing", "Stress Testing"] },
+  { name: "DevOps", count: "6 tools", tags: ["Git", "Jira", "Jenkins", "GitLab CI", "GitHub Actions", "Docker"] },
+  { name: "Domain Skills", count: "3 areas", tags: ["Payment Gateway Testing", "Cron Job Validation", "Financial Workflows"] },
+];
+
+const TIMELINE = [
+  { time: "Jan 2024 — Nov 2025", role: "Senior QA Engineer", org: "Bridging Healthcare Technologies Pvt. Ltd.", bullets: [
+    "Automated 200+ UI & API test scenarios using Playwright and Selenium, cutting regression effort by 40%.",
+    "Integrated test suites with Jenkins and GitLab CI pipelines; ran load and performance tests using JMeter and Artillery.",
+    "Introduced mandatory QA sign-off checkpoints before every release.",
+    "Tested and validated Payment Gateway integrations end-to-end — transaction flows, failures, edge cases.",
+    "Validated Cron Job executions and financial workflows for accurate scheduling and business logic.",
+    "Mentored junior QA engineers; awarded Best Employee of the Company and Best QA.",
+  ]},
+  { time: "Mar 2022 — Dec 2023", role: "QA Engineer", org: "Bridging Healthcare Technologies Pvt. Ltd.", bullets: [
+    "Led end-to-end manual testing (functional, regression, UAT) across Web and Mobile.",
+    "Ran API testing via Postman with global, environment, and collection variables.",
+    "Used MySQL joins and subqueries to validate backend data integrity.",
+    "Designed test cases for positive, negative, and edge cases; managed defects through Jira.",
+  ]},
+  { time: "Dec 2021 — Feb 2022", role: "Associate QA Engineer", org: "Bridging Healthcare Technologies Pvt. Ltd.", bullets: [
+    "Promoted to QA Engineer within 3 months for fast grasp of QA processes and quality delivery from day one.",
+  ]},
+];
+
+function Portfolio() {
+  const [lineCount, setLineCount] = useState(0);
+  useEffect(() => {
+    if (lineCount >= TERMINAL_LINES.length) return;
+    const t = setTimeout(() => setLineCount((c) => c + 1), 420);
+    return () => clearTimeout(t);
+  }, [lineCount]);
+
+  return (
+    <div className="gs-root">
+      <div className="gs-noise" />
+      <nav className="gs-nav">
+        <div className="gs-nav-inner">
+          <div className="gs-brand gs-mono"><Terminal size={16} color="#3ECF8E" /> gurdeep.qa</div>
+          <div className="gs-status">
+            <span className="gs-nav-coverage gs-mono">coverage <b>94%</b></span>
+            <span className="gs-nav-badge gs-mono"><span className="gs-dot" /> available for work</span>
+          </div>
+        </div>
+      </nav>
+
+      <div className="gs-wrap">
+        <section className="gs-hero">
+          <div className="gs-eyebrow gs-mono">Senior QA Engineer · Automation QA & SDET</div>
+          <div className="gs-terminal">
+            <div className="gs-term-bar">
+              <span className="gs-term-dot" style={{ background: "#F2555A" }} />
+              <span className="gs-term-dot" style={{ background: "#F2B84B" }} />
+              <span className="gs-term-dot" style={{ background: "#3ECF8E" }} />
+              <span className="gs-mono" style={{ fontSize: 12, color: "#6B7684", marginLeft: 8 }}>gurdeep_singh.spec.ts — run</span>
+            </div>
+            <div className="gs-term-body gs-mono">
+              {TERMINAL_LINES.slice(0, lineCount).map((line, i) => (
+                <div key={i} className="gs-term-line">
+                  <span className={line.type === "check" ? "gs-check" : line.type === "cmd" ? "gs-prompt" : "gs-out"}>{line.text}</span>
+                </div>
+              ))}
+              {lineCount >= TERMINAL_LINES.length && (
+                <div className="gs-term-line"><span className="gs-prompt">$</span><span className="gs-cursor" /></div>
+              )}
+            </div>
+          </div>
+
+          <h1 className="gs-h1">Gurdeep Singh<span>.</span></h1>
+          <p className="gs-role">I build automation that catches what manual passes miss — 4+ years testing healthcare SaaS and payment gateway systems where a silent failure means real money or real patients.</p>
+
+          <div className="gs-cta-row">
+            <a className="gs-btn gs-btn-primary" href="mailto:gurdeep.qa@gmail.com"><Mail size={14} /> Get in touch</a>
+            <a className="gs-btn" href="https://github.com/GurAutoTest" target="_blank" rel="noreferrer"><Github size={14} /> View GitHub</a>
+            <a className="gs-btn" href="https://linkedin.com/in/gur-deep-03235b169" target="_blank" rel="noreferrer"><Linkedin size={14} /> LinkedIn</a>
+          </div>
+
+          <div className="gs-stats">
+            <div className="gs-stat"><div className="gs-stat-num gs-mono"><Counter target={4} suffix="+" /></div><div className="gs-stat-label">Years Experience</div></div>
+            <div className="gs-stat"><div className="gs-stat-num gs-mono"><Counter target={200} suffix="+" /></div><div className="gs-stat-label">Scenarios Automated</div></div>
+            <div className="gs-stat"><div className="gs-stat-num gs-mono"><Counter target={40} suffix="%" /></div><div className="gs-stat-label">Regression Cut</div></div>
+            <div className="gs-stat"><div className="gs-stat-num gs-mono"><Counter target={2} /></div><div className="gs-stat-label">Core Domains</div></div>
+          </div>
+        </section>
+
+        <section className="gs-section">
+          <Reveal>
+            <div className="gs-section-head"><span className="gs-section-tag gs-mono">01</span><span className="gs-section-title">About</span></div>
+            <p className="gs-about-text">
+              I'm a <b>Senior QA Engineer / SDET</b> with a background spanning manual, automation, API, and performance testing — built almost entirely inside one demanding domain: <b>healthcare financing SaaS</b>. That means payment gateways, cron-driven financial workflows, and zero tolerance for a bug that reaches production. I automated 200+ test scenarios with Playwright and Selenium, cutting regression time by 40%, and set up the CI pipelines that keep those checks running on every release. I care about frameworks that scale with a codebase, not just scripts that pass once.
+            </p>
+          </Reveal>
+        </section>
+
+        <section className="gs-section">
+          <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">02</span><span className="gs-section-title">Test Suites (Skills)</span></div></Reveal>
+          <div className="gs-suite-grid">
+            {SUITES.map((s, i) => (
+              <Reveal key={s.name} delay={i * 60}>
+                <div className="gs-suite">
+                  <div className="gs-suite-head"><span className="gs-suite-name">{s.name}</span><span className="gs-suite-count gs-mono">✓ {s.count}</span></div>
+                  <div className="gs-tags">{s.tags.map((t) => <span className="gs-tag" key={t}>{t}</span>)}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="gs-section">
+          <Reveal><div className="gs-section-head"><span className="gs-section-tag gs-mono">03</span><span className="gs-section-title">Experience Log</span></div></Reveal>
+          <div className="gs-timeline">
+            {TIMELINE.map((item, i) => (
+              <Reveal key={item.time} delay={i * 80}>
+                <div className="gs-tl-item">
+                  <span className="gs-tl-dot" />
+                  <div className="gs-tl-time">{item.time}</div>
+                  <div className="gs-tl-role">{item.role}</div>
+                  <div className="gs-tl-org">{item.org}</div>
+                  <ul className="gs-tl-bullets">{item.bullets.map((b) => <li key={b}><CheckCircle2 size={15} />{b}</li>)}</ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+
+        <section className="gs-section">
+          <Reveal>
+            <div className="gs-section-head"><span className="gs-section-tag gs-mono">04</span><span className="gs-section-title">Featured Project</span></div>
+            <div className="gs-project">
+              <div className="gs-project-head">
+                <span className="gs-project-title">Denefits — Web & Mobile Application</span>
+                <span className="gs-project-badge">₹1,00,000+ delivered</span>
+              </div>
+              <ul>
+                <li><ChevronRight size={15} />Owned end-to-end QA for major features, from development to live release, across Web and Mobile.</li>
+                <li><ChevronRight size={15} />Tested and signed off every new feature pre-production — zero critical defects shipped.</li>
+                <li><ChevronRight size={15} />Validated and launched the Payment Plans feature, covering workflows, edge cases, and integrations.</li>
+                <li><ChevronRight size={15} />Actively building new automation projects — <span className="gs-mono">github.com/GurAutoTest</span></li>
+              </ul>
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="gs-section">
+          <Reveal>
+            <div className="gs-two-col">
+              <div className="gs-card">
+                <div className="gs-card-title"><Award size={15} /> Achievements</div>
+                <ul className="gs-ach-list">
+                  <li><Award size={15} />Best Employee of the Company</li>
+                  <li><Award size={15} />Best QA — early defect detection</li>
+                  <li><Award size={15} />Promoted Associate QA → Senior QA in under 4 years</li>
+                  <li><Award size={15} />Reduced regression effort by 40% through automation</li>
+                </ul>
+              </div>
+              <div className="gs-card">
+                <div className="gs-card-title"><GraduationCap size={15} /> Education</div>
+                <div className="gs-edu-item"><div className="gs-edu-degree">MBA — IT Management</div><div className="gs-edu-school">Chandigarh University, 2021</div></div>
+                <div className="gs-edu-item"><div className="gs-edu-degree">MCA</div><div className="gs-edu-school">Lovely Professional University, 2019</div></div>
+                <div className="gs-edu-item"><div className="gs-edu-degree">BCA</div><div className="gs-edu-school">Lovely Professional University, 2017</div></div>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+
+        <footer className="gs-footer">
+          <Reveal>
+            <div className="gs-footer-title gs-mono">$ let's talk_</div>
+            <div className="gs-footer-sub">Open to Automation QA & SDET roles — reply within a day.</div>
+            <div className="gs-links">
+              <a className="gs-flink" href="mailto:gurdeep.qa@gmail.com"><Mail size={15} />gurdeep.qa@gmail.com</a>
+              <a className="gs-flink" href="tel:+917528838897"><Phone size={15} />+91-7528838897</a>
+              <a className="gs-flink" href="https://linkedin.com/in/gur-deep-03235b169" target="_blank" rel="noreferrer"><Linkedin size={15} />LinkedIn</a>
+              <a className="gs-flink" href="https://github.com/GurAutoTest" target="_blank" rel="noreferrer"><Github size={15} />GitHub</a>
+            </div>
+            <div className="gs-fine">// 0 critical bugs shipped to production. that's the whole pitch.</div>
+          </Reveal>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Portfolio />);
+</script>
+</body>
+</html>
